@@ -108,10 +108,12 @@ export function transformUserDataObj(fetchedData) {
       })),
     },
   };
+
   transformedData.socialData = fetchedData.social_handles.map((social) => ({
     link: social.url,
     icon: social.platform.toLowerCase(),
   }));
+
   transformedData.portfolioData = fetchedData.projects
     .filter((project) => project.enabled === true)
     .sort((a, b) => a.sequence - b.sequence)
@@ -119,15 +121,31 @@ export function transformUserDataObj(fetchedData) {
       ImgLink: project.image.url,
       title: project.title,
       subTitle: project.techStack,
-      link: project.liveurl,
+
       paragraphList: [],
-      liveurl: project.liveurl,
-      githuburl: project.githuburl,
+      socialData: fetchedData.social_handles.map((social) => ({
+        link: social.url,
+        icon: social.platform.toLowerCase(),
+      })),
+    }));
+
+  transformedData.blogData = fetchedData.projects
+    .filter((project) => project.enabled === true)
+    .sort((a, b) => a.sequence - b.sequence)
+    .map((project, index) => ({
+      ImgLink: project.image.url,
+      title: project.title,
+      date: project.techStack,
+      delay: `700 + ${index * 100}`,
+
+      paragraphList: [],
+      socialData: fetchedData.social_handles.map((social) => ({
+        link: social.url,
+        icon: social.platform.toLowerCase(),
+      })),
     }));
 
   transformedData.experienceData = {
-    text: `My name  is ${names[0]}  ${names[1]}. I am a ${fetchedData.about.title} and Im very passionate and dedicated to my work`,
-    resumeCv: "/Resume.pdf",
     experience: fetchedData.timeline
       .filter(
         (timeline) =>
@@ -141,6 +159,24 @@ export function transformUserDataObj(fetchedData) {
         subtitle: timeline.company_name,
       })),
   };
+
+  transformedData.educationData = {
+    text: `My name  is ${names[0]}  ${names[1]}. I am a ${fetchedData.about.title} and Im very passionate and dedicated to my work`,
+    resumeCv: "/Resume.pdf",
+    experience: fetchedData.timeline
+      .filter(
+        (timeline) =>
+          timeline.forEducation === true && timeline.enabled === true
+      )
+      .sort((a, b) => a.sequence - b.sequence)
+      .map((timeline) => ({
+        start: timeline.startDate.substring(0, 4),
+        end: timeline.endDate.substring(0, 4),
+        title: timeline.jobTitle,
+        subtitle: timeline.company_name,
+      })),
+  };
+
   transformedData.contactData = {
     contactInfo: [
       {
@@ -170,6 +206,7 @@ export function transformUserDataObj(fetchedData) {
     ImgLink: fetchedData.about.avatar.url,
     name: fetchedData.about.name,
   };
-
+  console.log();
   return transformedData;
 }
+// console.log(socailData);

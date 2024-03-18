@@ -7,12 +7,13 @@ import Hero from "../components/Hero/Hero";
 import Portfolio from "../components/Portfolio/Portfolio";
 import Service from "../components/Service/Service";
 import Testimonial from "../components/Testimonial/Testimonial";
-import data from "../data.json";
+
+import Education from "../components/Education/Education";
 
 import PropTypes from "prop-types";
 
 const Home = ({ dynamicData }) => {
-  const { blogData } = data;
+  // const { blogData } = data;
 
   const {
     experienceData,
@@ -23,15 +24,22 @@ const Home = ({ dynamicData }) => {
     sliderData,
     contactData,
     footerData,
+    educationData,
+    blogData,
   } = dynamicData;
 
   return (
     <>
       <main className="wrapper">
         <Hero data={heroData} />
+
         <About data={aboutData} />
+        <Education data={educationData} />
+
         <Experience data={experienceData} />
+
         <Service data={serviceData} />
+
         <Portfolio data={portfolioData} />
         <Testimonial data={sliderData} />
         <Blog data={blogData} />

@@ -1,8 +1,16 @@
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
-import { socialData } from "../../data.json";
+// import { socialData } from "../../data.json";
 
-const Modal = ({ img, title, date, subTitle, paraList, modalClose }) => {
+const Modal = ({
+  img,
+  title,
+  date,
+  subTitle,
+  paraList,
+  socialData,
+  modalClose,
+}) => {
   const modalStyle = {
     backgroundColor: "rgba(0,0,0,.6)",
     backdropFilter: "saturate(180%) blur(8px)",
@@ -61,6 +69,7 @@ Modal.propTypes = {
   date: PropTypes.string,
   paraList: PropTypes.array,
   modalClose: PropTypes.func,
+  socialData: PropTypes.array,
 };
 
 export default Modal;

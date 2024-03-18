@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import { Icon } from "@iconify/react";
 
-const Experience = ({ data }) => {
-  const { experience } = data;
+const Education = ({ data }) => {
+  const { text, experience, resumeCv } = data;
 
   return (
     <section className="section experience-section bg-g">
@@ -11,7 +11,24 @@ const Experience = ({ data }) => {
         <div className="row gy-5">
           <div className="col-lg-5">
             <div className="section-heading">
-              <SectionHeading title="My Experience" subTitle="Experience" />
+              <SectionHeading title="My Education" subTitle="Education" />
+              <p
+                data-aos="fade-up"
+                data-aos-duration="800"
+                data-aos-delay="300"
+              >
+                {text}
+              </p>
+              <div
+                className="btn-bar"
+                data-aos="fade-up"
+                data-aos-duration="800"
+                data-aos-delay="200"
+              >
+                <a href={resumeCv} className="px-btn dark" download>
+                  Download my resume <Icon icon="bi-download" />
+                </a>
+              </div>
             </div>
           </div>
           <div className="col-lg-7 ps-xl-5">
@@ -35,8 +52,8 @@ const Experience = ({ data }) => {
   );
 };
 
-Experience.propTypes = {
+Education.propTypes = {
   data: PropTypes.object,
 };
 
-export default Experience;
+export default Education;

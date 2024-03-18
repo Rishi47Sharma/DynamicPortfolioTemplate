@@ -6,12 +6,12 @@ import Modal from "../Modal/Modal";
 
 const Portfolio = ({ data }) => {
   // Modal
+  console.log(data, "data");
   const [modal, setModal] = useState(false);
   const [tempData, setTempData] = useState([]);
 
-  const getData = (imgLink, title, subTitle, paragraphList) => {
-    console.log(imgLink, title, subTitle, paragraphList);
-    let tempData = [imgLink, title, subTitle, paragraphList];
+  const getData = (imgLink, title, subTitle, paragraphList, socialData) => {
+    let tempData = [imgLink, title, subTitle, paragraphList, socialData];
     setTempData(() => [1, ...tempData]);
     setModal(true);
   };
@@ -40,7 +40,8 @@ const Portfolio = ({ data }) => {
                         element.ImgLink,
                         element.title,
                         element.subTitle,
-                        element.paragraphList
+                        element.paragraphList,
+                        element.socialData
                       )
                     }
                   >
@@ -57,7 +58,8 @@ const Portfolio = ({ data }) => {
                             element.ImgLink,
                             element.title,
                             element.subTitle,
-                            element.paragraphList
+                            element.paragraphList,
+                            element.socialData
                           )
                         }
                       >
@@ -77,6 +79,7 @@ const Portfolio = ({ data }) => {
           title={tempData[2]}
           subTitle={tempData[3]}
           paraList={tempData[4]}
+          socialData={tempData[5]}
           modalClose={modalClose}
         />
       ) : (
