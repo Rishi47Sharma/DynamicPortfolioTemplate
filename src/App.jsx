@@ -12,17 +12,18 @@ import "aos/dist/aos.css";
 import { Suspense } from "react";
 import useFetchUserData from "./hooks/useFetchUserData";
 import Preloader from "./components/Preloader/Preloader";
+import Error from "./components/Error/Error";
 const App = () => {
   useEffect(() => {
     Aos.init({ once: true });
   }, []);
 
   const { isLoading, dynamicData, badApiData } = useFetchUserData(
-    "65b3a22c01d900e96c4219ae"
+    "65b3a22c01d900e96c4219a"
   );
 
   if (badApiData) {
-    return <div>something went wrong......</div>;
+    return <Error />;
   }
 
   const { socialData } = dynamicData;

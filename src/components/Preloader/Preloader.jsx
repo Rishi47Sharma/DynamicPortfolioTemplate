@@ -1,4 +1,3 @@
-
 const Preloader = () => {
   return (
     <div className="st-preloader">
