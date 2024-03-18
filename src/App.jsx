@@ -11,6 +11,7 @@ import "aos/dist/aos.css";
 
 import { Suspense } from "react";
 import useFetchUserData from "./hooks/useFetchUserData";
+import Preloader from "./components/Preloader/Preloader";
 const App = () => {
   useEffect(() => {
     Aos.init({ once: true });
@@ -27,7 +28,7 @@ const App = () => {
   const { socialData } = dynamicData;
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Preloader />}>
       <BrowserRouter>
         <Routes>
           <Route
