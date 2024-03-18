@@ -5,7 +5,10 @@ function Error() {
         src="https://cdn.rawgit.com/ahmedhosna95/upload/1731955f/sad404.svg"
         alt="404"
       ></img>
-      <h1>Error: Failed to fetch user data</h1>
+      <h1>
+        Sorry, we are unable to fetch user data at the moment. Please try again
+        later.
+      </h1>
     </div>
   );
 }

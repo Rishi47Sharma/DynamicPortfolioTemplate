@@ -141,6 +141,35 @@ export function transformUserDataObj(fetchedData) {
         subtitle: timeline.company_name,
       })),
   };
+  transformedData.contactData = {
+    contactInfo: [
+      {
+        icon: "chat-left-dots-fill",
+        title: "Chat to us",
+        text: "Our friendly team is there to help.",
+        emailLink: fetchedData.email,
+      },
+      {
+        icon: "compass",
+        title: "Visit us",
+        text: `Come say hello at ${fetchedData.about.address}`,
+      },
+      {
+        icon: "phone",
+        title: "Call us",
+        text: `Call us on ${fetchedData.about.phoneNumber}`,
+      },
+    ],
+    contactForm: {
+      title: "Got Ideas? We have got the skills. Lets team up.",
+      text: "Tell us more about yourself and what you are got in mind.",
+    },
+  };
+
+  transformedData.footerData = {
+    ImgLink: fetchedData.about.avatar.url,
+    name: fetchedData.about.name,
+  };
 
   return transformedData;
 }

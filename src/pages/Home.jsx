@@ -12,7 +12,7 @@ import data from "../data.json";
 import PropTypes from "prop-types";
 
 const Home = ({ dynamicData }) => {
-  const { blogData, contactData, footerData } = data;
+  const { blogData } = data;
 
   const {
     experienceData,
@@ -21,6 +21,8 @@ const Home = ({ dynamicData }) => {
     aboutData,
     serviceData,
     sliderData,
+    contactData,
+    footerData,
   } = dynamicData;
 
   return (

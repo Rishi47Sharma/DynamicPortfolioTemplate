@@ -354,30 +354,6 @@
       ]
     }
   },
-  "contactData": {
-    "contactInfo": [
-      {
-        "icon": "chat-left-dots-fill",
-        "title": "Chat to us",
-        "text": "Our friendly team is there to help.",
-        "emailLink": "info@domainname.com"
-      },
-      {
-        "icon": "compass",
-        "title": "Visit us",
-        "text": "Come say hello at ur office HQ. Warnwe Park Streetperrine, FL 33157 New York City"
-      },
-      {
-        "icon": "phone",
-        "title": "Call us",
-        "text": "Mon-Fri from 8am to 5pm. +01 (555) 000-0000"
-      }
-    ],
-    "contactForm": {
-      "title": "Got Ideas? We have got the skills. Lets team up.",
-      "text": "Tell us more about yourself and what you are got in mind."
-    }
-  },
   "footerData": {
     "ImgLink": "/images/about-banner.png",
     "name": "lilon williamson"
