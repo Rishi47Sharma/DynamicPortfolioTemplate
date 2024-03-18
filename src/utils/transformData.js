@@ -51,15 +51,18 @@ export function transformUserDataObj(fetchedData) {
   };
 
   // Transform serviceData
-  transformedData.serviceData = fetchedData.services.map((service, index) => ({
-    title: service.name,
-    heading: service.desc,
-    triger: `${index}`, // You may need to adjust this according to your logic
-    imgLink: service.image.url,
-    text: service.desc,
-  }));
+  transformedData.serviceData = fetchedData.services
+    .filter((service) => service.enabled === true)
+    .map((service, index) => ({
+      title: service.name,
+      heading: service.desc,
+      triger: `${index}`, // You may need to adjust this according to your logic
+      imgLink: service.image.url,
+      text: service.desc,
+    }));
 
   // Transform w
+
   transformedData.sliderData = {
     testimonialInfo: {
       useFor: "testimonial",
@@ -76,12 +79,14 @@ export function transformUserDataObj(fetchedData) {
           { breakpoint: 991, settings: { slidesToShow: 1, autoplay: true } },
         ],
       },
-      info: fetchedData.testimonials.map((testimonial) => ({
-        imgLink: testimonial.image.url,
-        name: testimonial.name,
-        designation: testimonial.position,
-        text: testimonial.review,
-      })),
+      info: fetchedData.testimonials
+        .filter((testimonial) => testimonial.enabled === true)
+        .map((testimonial) => ({
+          imgLink: testimonial.image.url,
+          name: testimonial.name,
+          designation: testimonial.position,
+          text: testimonial.review,
+        })),
     },
     brandInfo: {
       useFor: "brand",
@@ -108,6 +113,8 @@ export function transformUserDataObj(fetchedData) {
     icon: social.platform.toLowerCase(),
   }));
   transformedData.portfolioData = fetchedData.projects
+    .filter((project) => project.enabled === true)
+    .sort((a, b) => a.sequence - b.sequence)
     .map((project) => ({
       ImgLink: project.image.url,
       title: project.title,
@@ -116,21 +123,23 @@ export function transformUserDataObj(fetchedData) {
       paragraphList: [],
       liveurl: project.liveurl,
       githuburl: project.githuburl,
-    }))
-    .reverse();
+    }));
 
   transformedData.experienceData = {
     text: `My name  is ${names[0]}  ${names[1]}. I am a ${fetchedData.about.title} and Im very passionate and dedicated to my work`,
     resumeCv: "/Resume.pdf",
     experience: fetchedData.timeline
-      .filter((timeline) => timeline.forEducation === false)
+      .filter(
+        (timeline) =>
+          timeline.forEducation === false && timeline.enabled === true
+      )
+      .sort((a, b) => a.sequence - b.sequence)
       .map((timeline) => ({
         start: timeline.startDate.substring(0, 4),
         end: timeline.endDate.substring(0, 4),
         title: timeline.jobTitle,
         subtitle: timeline.company_name,
-      }))
-      .sort((a, b) => b.start - a.start),
+      })),
   };
 
   return transformedData;
